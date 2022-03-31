@@ -9,7 +9,7 @@ use Ramsey\Uuid\Uuid;
 
 class DepartmentsSeeder extends Seeder
 {
-    private const COMPANY_DEPARTMENTS_LIMIT = [5, 10];
+    private const COMPANY_DEPARTMENTS_LIMIT = [10, 20];
     private const DEPARTMENTS_TABLE = 'departments';
 
     /**

@@ -19,8 +19,8 @@ class CreateEmployeesTable extends Migration
 
             $table->string('first_name');
             $table->string('last_name');
-            $table->bigInteger('phone');
-            $table->string('email');
+            $table->bigInteger('phone')->unique();
+            $table->string('email')->unique();
             $table->string('gender', 10);
             $table->integer('salary');
             $table->date('hired_at');
