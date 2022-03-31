@@ -1,7 +1,7 @@
 up: docker-up
 down: docker-down
 restart: docker-down docker-up
-init: docker-down-clear docker-pull docker-build docker-up composer-update
+init: docker-down-clear docker-pull docker-build docker-up composer-update migrate seed
 
 docker-up:
 	docker-compose up -d
@@ -24,8 +24,17 @@ composer-install:
 composer-update:
 	docker-compose run --rm php-cli composer update
 
-console:
-	docker-compose run --rm php-cli php bin/console $(c)
+rollback:
+	docker-compose run --rm php-cli php artisan migrate:rollback
+
+migrate:
+	docker-compose run --rm php-cli php artisan migrate
+
+seed:
+	docker-compose run --rm php-cli php artisan db:seed
+
+artisan:
+	docker-compose run --rm php-cli php artisan $(c)
 
 require:
 	docker-compose run --rm php-cli composer require $(p)
