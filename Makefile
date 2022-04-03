@@ -2,6 +2,7 @@ up: docker-up
 down: docker-down
 restart: docker-down docker-up
 init: docker-down-clear docker-pull docker-build docker-up composer-update migrate seed
+db-rebuild: rollback migrate seed
 
 docker-up:
 	docker-compose up -d
